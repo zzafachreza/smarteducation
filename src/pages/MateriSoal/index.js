@@ -73,18 +73,20 @@ export default function MateriSoal({ navigation, route }) {
         let totalNilai = skor.reduce((a, b) => a + b, 0);
 
 
-        let nilai = (totalNilai / data.length) * 100;
+        let nilai = Math.round((totalNilai / data.length) * 100, 2);
 
         const kirim = {
             nilai: nilai,
             fid_user: user.id,
             fid_materi: route.params.id
         }
-        console.log(kirim)
+
+
         axios.post(apiURL + 'nilai_add', kirim).then(res => {
             console.log(res.data);
-            Alert.alert(MYAPP, 'Terima kasih sudah mengerjakan soal !');
-            // navigation.goBack()
+
+            Alert.alert(`Nilai kamu : ${nilai}`, 'Terima kasih sudah mengerjakan soal !');
+            navigation.goBack()
         });
 
 

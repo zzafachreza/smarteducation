@@ -15,6 +15,7 @@ import 'moment/locale/id';
 export default function Matpel({ navigation, route }) {
 
     const KATEGORI = route.params;
+    console.log(route.params)
     const [data, setData] = useState([]);
 
     const isFocus = useIsFocused();
@@ -27,8 +28,10 @@ export default function Matpel({ navigation, route }) {
 
 
     const __getTransaction = () => {
-        axios.post(apiURL + 'matpel').then(res => {
-            console.log(res.data);
+        axios.post(apiURL + 'matpel', {
+            fid_kategori: route.params.id_kategori
+        }).then(res => {
+            console.log(res.data)
             setData(res.data);
         })
     }
@@ -37,7 +40,6 @@ export default function Matpel({ navigation, route }) {
         return (
             <TouchableNativeFeedback onPress={() => {
                 navigation.navigate('Materi', {
-                    fid_kategori: KATEGORI.id_kategori,
                     fid_matpel: item.id,
                     nama_matpel: item.nama_matpel,
                     tingkat: KATEGORI.tingkat,

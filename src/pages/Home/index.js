@@ -157,8 +157,8 @@ export default function Home({ navigation, route }) {
           flexDirection: 'row'
         }}>
           <Mylistdata onPress={() => navigation.navigate('Matpel', data[0])} label={data[0].kelas} />
-          <Mylistdata label={data[1].kelas} />
-          <Mylistdata label={data[2].kelas} />
+          <Mylistdata onPress={() => navigation.navigate('Matpel', data[1])} label={data[1].kelas} />
+          <Mylistdata onPress={() => navigation.navigate('Matpel', data[2])} label={data[2].kelas} />
         </View>
 
 
@@ -172,9 +172,9 @@ export default function Home({ navigation, route }) {
         <View style={{
           flexDirection: 'row'
         }}>
-          <Mylistdata label={data[3].kelas} />
-          <Mylistdata label={data[4].kelas} />
-          <Mylistdata label={data[5].kelas} />
+          <Mylistdata onPress={() => navigation.navigate('Matpel', data[3])} label={data[3].kelas} />
+          <Mylistdata onPress={() => navigation.navigate('Matpel', data[4])} label={data[4].kelas} />
+          <Mylistdata onPress={() => navigation.navigate('Matpel', data[5])} label={data[5].kelas} />
         </View>
 
       </View>}

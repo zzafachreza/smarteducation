@@ -11,7 +11,7 @@ import 'intl';
 import 'intl/locale-data/jsonp/en';
 import moment from 'moment';
 import 'moment/locale/id';
-
+import { YoutubePlayer, getYoutubeMeta } from "react-native-youtube-iframe";
 export default function Materi({ navigation, route }) {
 
     const KATEGORI = route.params;
@@ -25,15 +25,18 @@ export default function Materi({ navigation, route }) {
         }
     }, [isFocus]);
 
+    const [ARRAY_YT, SETARRAT_YT] = useState([]);
 
     const __getTransaction = () => {
         axios.post(apiURL + 'materi', {
-            fid_kategori: route.params.fid_kategori,
             fid_matpel: route.params.fid_matpel,
 
         }).then(res => {
-            console.log(res.data);
+
+
+
             if (res.data.length > 0) {
+
                 setData(res.data);
             } else {
                 Alert.alert(MYAPP, 'Maaf materi belum ada !')
@@ -42,7 +45,15 @@ export default function Materi({ navigation, route }) {
         })
     }
 
+
+
+
     const __renderItem = ({ item }) => {
+
+
+
+
+
         return (
             <TouchableNativeFeedback onPress={() => {
                 navigation.navigate('MateriDetail', item)
@@ -54,14 +65,14 @@ export default function Materi({ navigation, route }) {
                     marginVertical: 4,
                     borderRadius: 10,
                     overflow: 'hidden',
-                    alignItems: 'center'
+                    // alignItems: 'center'
                 }}>
                     <Image source={{
-                        uri: item.image
+                        uri: `https://i.ytimg.com/vi/${item.youtube}/hqdefault.jpg`
                     }} style={{
-                        width: '100%',
-                        height: 200,
+                        height: 200
                     }} />
+                    {/* <Text>{tmpIMG}</Text> */}
                     <View style={{
                         padding: 10,
                     }}>
