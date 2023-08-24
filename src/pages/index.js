@@ -13,7 +13,9 @@ import Matpel from './Matpel';
 import Materi from './Materi';
 import MateriDetail from './MateriDetail';
 import MateriSoal from './MateriSoal';
-
+import Latihan from './Latihan';
+import MatpelLatihan from './MatpelLatihan';
+import MateriLatihan from './MateriLatihan';
 
 
 
@@ -33,6 +35,10 @@ export {
   Matpel,
   Materi,
   MateriDetail,
-  MateriSoal
+  MateriSoal,
+  Latihan,
+  MatpelLatihan,
+  MateriLatihan
+
 
 };

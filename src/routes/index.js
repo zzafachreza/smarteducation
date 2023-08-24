@@ -17,6 +17,9 @@ import {
   Matpel,
   MateriSoal,
   MateriDetail,
+  Latihan,
+  MatpelLatihan,
+  MateriLatihan,
 
 
 
@@ -84,6 +87,15 @@ export default function Router() {
       />
 
       <Stack.Screen
+        name="Latihan"
+        component={Latihan}
+        options={{
+          headerShown: false,
+
+        }}
+      />
+
+      <Stack.Screen
         name="MateriSoal"
         component={MateriSoal}
         options={{
@@ -141,10 +153,26 @@ export default function Router() {
         }}
       />
 
+      <Stack.Screen
+        name="MateriLatihan"
+        component={MateriLatihan}
+        options={{
+          headerShown: false,
+        }}
+      />
+
 
       <Stack.Screen
         name="Matpel"
         component={Matpel}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="MatpelLatihan"
+        component={MatpelLatihan}
         options={{
           headerShown: false,
         }}

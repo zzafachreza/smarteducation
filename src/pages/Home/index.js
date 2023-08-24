@@ -203,6 +203,18 @@ export default function Home({ navigation, route }) {
 
         </TouchableOpacity>
 
+        <TouchableOpacity onPress={() => navigation.navigate('Latihan')} style={{
+          padding: 10,
+        }}>
+          <Icon type='ionicon' name='list-outline' color={colors.white} size={20} />
+          <Text style={{
+            fontFamily: fonts.secondary[600],
+            fontSize: 12,
+            color: colors.white
+          }}>Latihan</Text>
+
+        </TouchableOpacity>
+
 
 
         <TouchableOpacity onPress={() => navigation.navigate('Account')} style={{
