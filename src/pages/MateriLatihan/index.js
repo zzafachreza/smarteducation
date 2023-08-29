@@ -130,7 +130,10 @@ export default function MateriLatihan({ navigation, route }) {
                 flex: 1,
                 padding: 20,
             }}>
-                <FlatList data={data} renderItem={__renderItem} />
+                <FlatList showsVerticalScrollIndicator={false} data={data} renderItem={__renderItem} />
+                <View style={{
+                    height: 40,
+                }} />
             </ScrollView>
         </SafeAreaView>
     )
