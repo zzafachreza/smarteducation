@@ -18,7 +18,8 @@ export default function MateriSoal({ navigation, route }) {
     const [open, setOpen] = useState(false);
     const [pilih, setPilih] = useState([]);
     const [skor, setSkor] = useState([]);
-    const [sudah, setSudah] = useState([])
+    const [sudah, setSudah] = useState([]);
+    const [buka, setBuka] = useState(false);
 
     const [soal, setSoal] = useState([])
     useEffect(() => {
@@ -35,7 +36,7 @@ export default function MateriSoal({ navigation, route }) {
             fid_materi: route.params.id
         }).then(res => {
 
-            console.log(res.data);
+            console.log(res.data[0]);
 
             if (res.data.length > 0) {
                 res.data.map(i => {
@@ -68,6 +69,8 @@ export default function MateriSoal({ navigation, route }) {
 
         })
     }
+
+
     const sendServer = () => {
 
         let totalNilai = skor.reduce((a, b) => a + b, 0);
@@ -158,7 +161,7 @@ export default function MateriSoal({ navigation, route }) {
 
                                     onPress={() => {
 
-
+                                        setBuka(true);
 
                                         if (!pilih[nomor].a) {
                                             pilih[nomor] = { b: false, c: false, d: false, a: true, e: false };
@@ -192,7 +195,7 @@ export default function MateriSoal({ navigation, route }) {
 
                                     }}
 
-                                    style={{ flexDirection: 'row', marginVertical: 5, position: 'relative', paddingLeft: 5 }}>
+                                    style={{ flexDirection: 'row', marginVertical: 5, position: 'relative', paddingLeft: 5, alignItems: 'center' }}>
 
                                     <Text style={{ fontFamily: fonts.secondary[600], fontSize: 14, color: colors.black }}>A. </Text>
                                     {pilih[nomor].a &&
@@ -208,13 +211,17 @@ export default function MateriSoal({ navigation, route }) {
                                         }}
                                     />
 
+                                    {buka && data[nomor].jawaban == 'A' && <View style={{ marginHorizontal: 5, }}>
+                                        <Icon type='ionicon' size={14} name='checkmark-circle' color={colors.success} />
+                                    </View>}
+
 
                                 </TouchableOpacity>
 
                                 <TouchableOpacity
 
                                     onPress={() => {
-
+                                        setBuka(true);
                                         if (!pilih[nomor].b) {
                                             pilih[nomor] = { a: false, c: false, d: false, b: true, e: false };
                                             setPilih([...pilih])
@@ -245,7 +252,9 @@ export default function MateriSoal({ navigation, route }) {
 
                                     }}
 
-                                    style={{ flexDirection: 'row', marginVertical: 5, position: 'relative', paddingLeft: 5 }}>
+                                    style={{ flexDirection: 'row', marginVertical: 5, position: 'relative', paddingLeft: 5, alignItems: 'center' }}>
+
+
 
                                     <Text style={{ fontFamily: fonts.secondary[600], color: colors.black, fontSize: 14 }}>B. </Text>
                                     {pilih[nomor].b && <View style={{ position: 'absolute', left: -3, top: -5 }}><Icon type='ionicon' color={colors.secondary} name='checkmark-outline' /></View>}
@@ -256,12 +265,16 @@ export default function MateriSoal({ navigation, route }) {
                                         }}
                                     />
 
+                                    {buka && data[nomor].jawaban == 'B' && <View style={{ marginHorizontal: 5, }}>
+                                        <Icon type='ionicon' size={14} name='checkmark-circle' color={colors.success} />
+                                    </View>}
+
                                 </TouchableOpacity>
 
                                 <TouchableOpacity
 
                                     onPress={() => {
-
+                                        setBuka(true);
                                         if (!pilih[nomor].c) {
                                             pilih[nomor] = { b: false, a: false, d: false, c: true, e: false };
                                             setPilih([...pilih])
@@ -291,7 +304,7 @@ export default function MateriSoal({ navigation, route }) {
 
                                     }}
 
-                                    style={{ flexDirection: 'row', marginVertical: 5, position: 'relative', paddingLeft: 5 }}>
+                                    style={{ flexDirection: 'row', marginVertical: 5, position: 'relative', paddingLeft: 5, alignItems: 'center' }}>
 
                                     <Text style={{ fontFamily: fonts.secondary[600], color: colors.black, fontSize: 14 }}>C. </Text>
                                     {pilih[nomor].c && <View style={{ position: 'absolute', left: -3, top: -5 }}><Icon type='ionicon' color={colors.secondary} name='checkmark-outline' /></View>}
@@ -302,12 +315,15 @@ export default function MateriSoal({ navigation, route }) {
                                         }}
                                     />
 
+                                    {buka && data[nomor].jawaban == 'C' && <View style={{ marginHorizontal: 5, }}>
+                                        <Icon type='ionicon' size={14} name='checkmark-circle' color={colors.success} />
+                                    </View>}
                                 </TouchableOpacity>
 
                                 <TouchableOpacity
 
                                     onPress={() => {
-
+                                        setBuka(true);
                                         if (!pilih[nomor].d) {
                                             pilih[nomor] = { b: false, c: false, a: false, d: true, e: false };
                                             setPilih([...pilih])
@@ -337,7 +353,7 @@ export default function MateriSoal({ navigation, route }) {
 
                                     }}
 
-                                    style={{ flexDirection: 'row', marginVertical: 5, position: 'relative', paddingLeft: 5 }}>
+                                    style={{ flexDirection: 'row', marginVertical: 5, position: 'relative', paddingLeft: 5, alignItems: 'center' }}>
 
                                     <Text style={{ fontFamily: fonts.secondary[600], color: colors.black, fontSize: 14 }}>D. </Text>
                                     {pilih[nomor].d && <View style={{ position: 'absolute', left: -3, top: -5 }}><Icon type='ionicon' color={colors.secondary} name='checkmark-outline' /></View>}
@@ -348,6 +364,9 @@ export default function MateriSoal({ navigation, route }) {
                                         }}
                                     />
 
+                                    {buka && data[nomor].jawaban == 'D' && <View style={{ marginHorizontal: 5, }}>
+                                        <Icon type='ionicon' size={14} name='checkmark-circle' color={colors.success} />
+                                    </View>}
                                 </TouchableOpacity>
 
 
@@ -430,7 +449,7 @@ export default function MateriSoal({ navigation, route }) {
                     {nomor < (data.length - 1) &&
                         <TouchableOpacity onPress={() => {
                             // data.length
-
+                            setBuka(false);
                             if (!pilih[nomor].a && !pilih[nomor].b && !pilih[nomor].c && !pilih[nomor].d && !pilih[nomor].e) {
                                 sudah[nomor] = 0;
                                 setNomor(nomor + 1);

@@ -57,7 +57,7 @@ export default function Register({ navigation }) {
         repassword: '',
         nama_lengkap: '',
         sekolah: '',
-        voucher: 'SML'
+        voucher: ''
     });
 
     const simpan = () => {
